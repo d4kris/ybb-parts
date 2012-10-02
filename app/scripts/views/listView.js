@@ -2,7 +2,7 @@ yeomanbbb.Views.ListView = Backbone.View.extend({
 
   tagName : "ul",
 
-  template : _.template($("#searchResult-template").html()),
+  template : new EJS({ url: '/scripts/templates/searchResult-template' }),
 
 	initialize : function() {
   	console.log("List view initialize");
@@ -35,15 +35,15 @@ yeomanbbb.Views.ListView = Backbone.View.extend({
 yeomanbbb.Views.ListItemView = Backbone.View.extend({
 
   tagName: "li",
+  template : new EJS({ url: '/scripts/templates/listItem-template' }),
 
   initialize: function() {
-    this.template = _.template($("#listItem-template").html());
     this.model.bind("change", this.render, this);
   },
 
   render: function(eventName) {
     console.log("list item rendering");
-    this.$el.html(this.template(this.model.toJSON()));
+    this.$el.html(this.template.render(this.model.toJSON()));
     return this.el;
   }
 

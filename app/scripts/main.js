@@ -6,7 +6,7 @@ window.yeomanbbb = {
   Routers: {},
   init: function() {
     console.log('Hello from Backbone!');
- 		new yeomanbbb.Routers.ApplicationRouter();
+ 		yeomanbbb.Routers.app = new yeomanbbb.Routers.ApplicationRouter();
  		Backbone.history.start();
 
 
@@ -16,3 +16,4 @@ window.yeomanbbb = {
 $(document).ready(function(){
   yeomanbbb.init();
 });
+"http://localhost:3501/"

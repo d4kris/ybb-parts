@@ -4,7 +4,7 @@ yeomanbbb.Views.SubtabsView = Backbone.View.extend({
   /* Which tab user is currently on */
   tab: 'parts', 
 
-  template : new EJS({url: '/scripts/templates/subtabs-template.ejs'}),
+  template : new EJS({url: '/scripts/templates/subtabs-template.ejs.html'}),
 
   // events: {
   //   "click .search:" : "searchForm"

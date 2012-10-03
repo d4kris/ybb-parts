@@ -1,23 +1,28 @@
 yeomanbbb.Routers.ApplicationRouter = Backbone.Router.extend({
 
 	initialize : function () {
-		var subtabs = new yeomanbbb.Views.SubtabsView({ "tab" : "parts" });
-		this.searchForm();
+		this.subtabs = new yeomanbbb.Views.SubtabsView({ "tab" : "parts" });
+		this.partsHandler();
 	}, 
 
 	routes: {
-		"parts": "searchForm",
+		"parts": "partsHandler",
 		"parts/search": "searchForm",
 		"parts/:id": "partsDetails"
+	},
+
+	partsHandler: function () {
+		console.log("Router: partsHandler");
+		this.searchForm();
 	},
 
 	searchForm: function () {
 		// show search form, clear list
 		console.log("Router: searchForm");
-		new yeomanbbb.Views.SearchFormView();
-		// this.showView("#list", new yeomanbbb.Views.ListView({
-		// 	model: new yeomanbbb.Collections.PartsCollection()
-		// }));
+		if (!this.searchFormModel) {
+			this.searchFormModel = new yeomanbbb.Models.SearchFormModel();
+		}
+		new yeomanbbb.Views.SearchFormView({ model : this.searchFormModel });
 	},
 
 	partsDetails: function () {

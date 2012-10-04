@@ -2,8 +2,7 @@ yeomanbbb.Views.SearchFormView = Backbone.View.extend({
 
   el: '#content',
 
-  template : new EJS({ url: '/scripts/templates/searchForm-template.ejs.html' }),
-
+  
   events: {
     "change"             : "onChange",
     "click #searchParts" : "searchParts"
@@ -11,8 +10,14 @@ yeomanbbb.Views.SearchFormView = Backbone.View.extend({
 
 	initialize: function() {
   	console.log("searchFormView initialize");
+    this.loadTemplate();
     _.bindAll(this, "render");
     this.render();
+  },
+
+  loadTemplate: function() {
+    console.log("loadTemplate");
+    this.template = new EJS({ url: '/scripts/templates/searchForm-template.ejs.html' });
   },
 
   render: function() {

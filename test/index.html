@@ -8,7 +8,8 @@
 <body>
   <div id="mocha"></div>
   <script src="lib/mocha-1.2.2/mocha.js"></script>
-  <script>mocha.setup('bdd')</script>
+  <script>mocha.setup('bdd', {ignoreLeaks: true} )</script>
+  <!--<script>mocha.setup({ignoreLeaks: true});</script>-->
 
   <!-- assertion framework -->
   
@@ -23,22 +24,48 @@
   <!-- -->
 
   <!-- include source files here... -->
+<script src="../app/scripts/vendor/jquery.min.js"></script>
+<script src="../app/scripts/vendor/lodash.min.js"></script>
+<script src="../app/scripts/vendor/backbone-min.js"></script>
+<script src="../app/scripts/vendor/ejs_production.js"></script>
+<script src="../app/scripts/main.js"></script>
+<script src="../app/scripts/views/listView.js"></script>
+<script src="../app/scripts/views/subtabsView.js"></script>
+<script src="../app/scripts/views/searchFormView.js"></script>
+<script src="../app/scripts/models/searchFormModel.js"></script>
+<script src="../app/scripts/models/partsModel.js"></script>
+<script src="../app/scripts/collections/partsCollection.js"></script>
+<script src="../app/scripts/helpers/localStore.js"></script>
+<script src="../app/scripts/routes/application-router.js"></script>
 
-  <!-- include spec files here... -->
+
   <script>
   // replace this by your own specs
-  (function() {
-    describe('Give it some context', function() {
-      describe('maybe a bit more context here', function() {
-
-        it('should run here few assertions', function() {
-
-        });
-
+(function() {
+    describe('Setup', function(){
+      before(function(){
+        // override loadTemplate
+        yeomanbbb.Views.SearchFormView.prototype.loadTemplate = function() {
+          this.template = new EJS({ text: '<div></div>' });
+        };
+        yeomanbbb.Views.SubtabsView.prototype.loadTemplate = function() {
+          this.template = new EJS({ text: '<div></div>' });
+        };
+        yeomanbbb.Views.ListView.prototype.loadTemplate = function() {
+          this.template = new EJS({ text: '<div></div>' });
+        };
       });
     });
   })();
+
   </script>
+
+  <!-- include spec files here... -->
+  <!-- 
+  <script src="spec/applicationRouterTest.js"></script>
+  -->
+  <script src="spec/searchFormViewTest.js"></script> 
+  
 
   <!-- trigger the mocha runner -->
   <script src="runner/mocha.js"></script>

@@ -27,8 +27,6 @@ yeomanbbb.Routers.ApplicationRouter = Backbone.Router.extend({
 
 	partsDetails: function () {
 		// show details
-	//		this.showView("#search", new yeomanbbb.Views.SearchFormView());
-
 	}
 
 

@@ -2,16 +2,19 @@ yeomanbbb.Views.ListView = Backbone.View.extend({
 
   tagName : "ul",
 
-  template : new EJS({ url: '/scripts/templates/searchResult-template.ejs.html' }),
-
 	initialize : function() {
   	console.log("List view initialize");
-
     // _.bindAll(this, "render");
     this.model.bind("reset", this.render, this);
     this.model.bind("add", this.appendNewPart, this);
 
+    this.loadTemplate();
     this.render();
+  },
+
+  loadTemplate: function() {
+    console.log("loadTemplate");
+    this.template = new EJS({ url: '/scripts/templates/searchResult-template.ejs.html' });
   },
 
   render : function() {

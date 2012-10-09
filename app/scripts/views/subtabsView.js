@@ -17,14 +17,9 @@ define([
 	
 		initialize: function(){
 	  	console.log("subtabsView initialize");
-	    this.loadTemplate();
+	    this.template = _.template( subtabsTemplate );
 	    _.bindAll(this, "render");
 	    this.render();
-	  },
-	
-	  loadTemplate: function() {
-	    console.log("loadTemplate");
-	    this.template = _.template( subtabsTemplate );
 	  },
 	
 	  render: function(){

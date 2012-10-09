@@ -4,8 +4,10 @@ define([
   'backbone',
   'text!templates/searchFormTemplate.html',
   'collections/partsCollection',
-  'views/listView'
-  ], function ( $, _, Backbone, SearchFormTemplate, PartsCollection, ListView ) {
+  'views/listView',
+  'typeahead',
+  'utils/localStore'
+  ], function ( $, _, Backbone, SearchFormTemplate, PartsCollection, ListView, typeAhead, localStore ) {
 
     var SearchFormView = Backbone.View.extend({
 
@@ -25,13 +27,15 @@ define([
 
       loadTemplate: function() {
         console.log("loadTemplate");
-        this.template = _.template( SearchFormTemplate );
+        this.template = _.template( this.options.template || SearchFormTemplate );
       },
 
       render: function() {
         console.log("searchFormView rendering");
         this.$el.html(this.template(this.model.toJSON()));
-        return this;
+        // load autocomplete contents 
+  	    this.loadModelTypeahead();
+  	    return this;
       }, 
 
       onChange: function (event) {
@@ -58,7 +62,23 @@ define([
             $("#list").html(listView.el);
           }
         });
-      }
+      }, 
+  	  
+  	  // load model autocomplete list
+  	  loadModelTypeahead: function() {
+  	  	$('#model').typeahead({
+  	  			source: function(query, process) {
+//  	  				return $.get(url, {query:query}, function (data) {
+//  	  				  return process(data.modelId);
+//  	  			  }
+  	  				var i, x = 0;
+  	  				for (i=0; i<1000000000; i++) {
+  	  					x++;
+  	  				}
+  	  				return _.pluck(localStore.truckModel, 'modelId');
+  	  			} 
+  	  	});
+  	  }
 
     });
     

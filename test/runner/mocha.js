@@ -1,7 +1,11 @@
 (function() {
+	console.log("running mocha");
   var runner = mocha.run();
 
-  if(!window.PHANTOMJS) return;
+  if(!window.PHANTOMJS) {
+  	console.log("no PHANTOMJS");
+  	return;
+  }
 
   runner.on('test', function(test) {
     sendMessage('testStart', test.title);

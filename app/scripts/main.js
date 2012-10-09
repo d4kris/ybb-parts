@@ -21,7 +21,8 @@ require.config({
     'jquery':     'vendor/jquery.min',
     'underscore': 'vendor/lodash.min',
     'backbone':   'vendor/backbone-min',
-    'text':       'vendor/require/text'
+    'text':       'vendor/require/text',
+    'typeahead':  'vendor/bootstrap/bootstrap-typeahead'
   }
 });
 

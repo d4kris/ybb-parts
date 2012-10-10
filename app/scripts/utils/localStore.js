@@ -14,8 +14,8 @@ define([
 		        { chassiID: 'B0238402', name: 'Steering wheel', model: 'DH12' },
 		        { chassiID: 'B0238402', name: 'Rearview mirror', model: 'DH15' }
 		      ],
-		    
-		    functionGroupAutoFill: [
+		    // url: functionGroupAutoFill
+		    functionGroups: [
 		        {"desc":"0. General","id":"0","label":"0"},
 		        {"desc":"00. General","id":"00","label":"00"},
 		        {"desc":"000. General","id":"000","label":"000"},

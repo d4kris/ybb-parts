@@ -35,6 +35,7 @@ define([
         this.$el.html(this.template(this.model.toJSON()));
         // load autocomplete contents 
   	    this.loadModelTypeahead();
+  	    this.loadFunctionGroupTypeahead();
   	    return this;
       }, 
 
@@ -71,11 +72,19 @@ define([
 //  	  				return $.get(url, {query:query}, function (data) {
 //  	  				  return process(data.modelId);
 //  	  			  }
-  	  				var i, x = 0;
-  	  				for (i=0; i<1000000000; i++) {
-  	  					x++;
-  	  				}
-  	  				return _.pluck(localStore.truckModel, 'modelId');
+  	  				return _.pluck(localStore.truckModels, 'modelId');
+  	  			} 
+  	  	});
+  	  },
+  	  
+  	  // load model autocomplete list
+  	  loadFunctionGroupTypeahead: function() {
+  	  	$('#functionGroup').typeahead({
+  	  			source: function(query, process) {
+//  	  				return $.get(url, {query:query}, function (data) {
+//  	  				  return process(data.id);
+//  	  			  }
+  	  				return _.pluck(localStore.functionGroups, 'id');
   	  			} 
   	  	});
   	  }

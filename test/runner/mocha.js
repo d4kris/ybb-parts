@@ -1,7 +1,25 @@
-(function() {
+require({
+  // Ensure you point to where your spec folder is, base directory is app/scripts,
+  // which is why ../../test is necessary
+  paths: {
+    spec: '../../test/spec'
+  }
+
+}, [
+	// Load specs
+	'spec/models/searchFormModelTest',
+	'spec/models/partsModelTest'
+	
+], function() {
+  'use strict';
+
+ 	console.log("running mocha");
   var runner = mocha.run();
 
-  if(!window.PHANTOMJS) return;
+  if(!window.PHANTOMJS) {
+  	console.log("no PHANTOMJS");
+  	return;
+  }
 
   runner.on('test', function(test) {
     sendMessage('testStart', test.title);
@@ -38,4 +56,4 @@
     var args = [].slice.call(arguments);
     alert(JSON.stringify(args));
   }
-})();
+});

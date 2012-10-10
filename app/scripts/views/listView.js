@@ -11,7 +11,6 @@ define([
 	
 		initialize : function() {
 	  	console.log("List view initialize");
-	    // _.bindAll(this, "render");
 	    this.model.bind("reset", this.render, this);
 	    this.model.bind("add", this.appendNewPart, this);
 	
@@ -20,8 +19,6 @@ define([
 	
 	  render : function() {
 	    console.log("List view rendering");
-	    // this.$el.html(this.template());
-	    // return this;
 	    _.each(this.model.models, function(part) {
 	        this.appendNewPart(part);
 	      }, this);

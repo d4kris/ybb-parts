@@ -8,37 +8,17 @@
 <body>
   <div id="mocha"></div>
   <script src="lib/mocha/mocha.js"></script>
-  <script>mocha.setup('bdd')</script>
+  <script>mocha.setup({ ui:'bdd', globals: ['_', '$', 'jQuery*', 'Backbone', 'JST']})</script>
 
   <!-- assertion framework -->
   
   <script src="lib/chai.js"></script>
     
-      
   <script>expect = chai.expect</script>
       
-    
-  
-
-  <!-- -->
-
-  <!-- include source files here... -->
-
-  <!-- include spec files here... -->
-  <script>
-  // replace this by your own specs
-  (function() {
-    describe('Give it some context', function() {
-      describe('maybe a bit more context here', function() {
-
-        it('should run here few assertions', function() {
-
-        });
-
-      });
-    });
-  })();
-  </script>
+  <!-- build:js scripts/amd-app.js -->
+  <script data-main="../app/scripts/main" src="../app/scripts/vendor/require.js"></script>
+  <!-- endbuild -->
 
   <!-- trigger the mocha runner -->
   <script src="runner/mocha.js"></script>

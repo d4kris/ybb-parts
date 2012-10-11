@@ -1,6 +1,6 @@
 // Define paths to our dependencies
 require.config({
-	baseUrl: "../scripts/",
+	baseUrl: "../app/scripts/",
 
 	// The shim config allows us to configure dependencies for
 	// scripts that do not call define() to register a module

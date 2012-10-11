@@ -3,14 +3,16 @@ define([
   'underscore',
   'backbone',
   'views/subtabsView', 
+  'models/subtabsModel',
   'views/searchFormView',
   'models/searchFormModel'
-], function($, _, Backbone, SubtabsView, SearchFormView, SearchFormModel) {
+], function($, _, Backbone, SubtabsView, SubtabsModel, SearchFormView, SearchFormModel) {
         
 	var ImpactRouter = Backbone.Router.extend({
 
 		initialize : function () {
-			this.subtabs = new SubtabsView({ "tab" : "parts" });
+			var subtabModel = new SubtabsModel();
+			this.subtabs = new SubtabsView({ model : subtabModel });
 			this.partsHandler();
 		}, 
 	

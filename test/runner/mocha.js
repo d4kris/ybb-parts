@@ -7,8 +7,9 @@ require({
 
 }, [
 	// Load specs
+	'spec/models/partsModelTest',
 	'spec/models/searchFormModelTest',
-	'spec/models/partsModelTest'
+	'spec/views/searchFormViewTest'
 	
 ], function() {
   'use strict';

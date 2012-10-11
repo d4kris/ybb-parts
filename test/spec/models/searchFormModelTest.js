@@ -5,23 +5,24 @@ define([
 	console.log('SFM');
 
 	describe('models/SearchFormModel', function(){
-		var model;
+		var modell;
 		
-    beforeEach(function(){
-      model = new SearchFormModel();
-    });
-
     describe('#initialize', function(){
-      it('should have default values', function() {
-        expect(model).to.be.an('object');
+
+    	beforeEach(function(){
+        modell = new SearchFormModel();
+      });
+
+      it('should exist', function() {
+        expect(modell).to.be.an('object');
       });
 
       it('should have defaults set', function () {
-        expect(model.get('chassisID_1')).to.equal('');
-        expect(model.get('chassisID_2')).to.equal('');
-        expect(model.get('vin')).to.equal('');
-        expect(model.get('model')).to.equal('');
-        expect(model.get('functionGroup')).to.equal('');
+        expect(modell.get('chassisID_1')).to.equal('');
+//        expect(modell.get('chassisID_2')).to.equal('');
+//        expect(modell.get('vin')).to.equal('');
+//        expect(modell.get('model')).to.equal('');
+//        expect(modell.get('functionGroup')).to.equal('');
       });
 
     });

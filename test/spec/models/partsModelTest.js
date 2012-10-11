@@ -18,7 +18,7 @@ define([
         expect(model).to.be.defined;
       });
 
-      it('should have defaults set', function () {
+      it('should have defaults set!', function () {
         expect(model.get('chassiID')).to.equal('');
         expect(model.get('name')).to.equal('');
         expect(model.get('model')).to.equal('');

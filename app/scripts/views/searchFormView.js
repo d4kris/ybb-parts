@@ -4,8 +4,10 @@ define([
   'backbone',
   'text!templates/searchFormTemplate.html',
   'collections/partsCollection',
-  'views/listView'
-  ], function ( $, _, Backbone, SearchFormTemplate, PartsCollection, ListView ) {
+  'views/listView',
+  'typeahead',
+  'utils/localStore'
+  ], function ( $, _, Backbone, SearchFormTemplate, PartsCollection, ListView, typeAhead, localStore ) {
 
     var SearchFormView = Backbone.View.extend({
 
@@ -25,13 +27,16 @@ define([
 
       loadTemplate: function() {
         console.log("loadTemplate");
-        this.template = _.template( SearchFormTemplate );
+        this.template = _.template( this.options.template || SearchFormTemplate );
       },
 
       render: function() {
         console.log("searchFormView rendering");
         this.$el.html(this.template(this.model.toJSON()));
-        return this;
+        // load autocomplete contents 
+  	    this.loadModelTypeahead();
+  	    this.loadFunctionGroupTypeahead();
+  	    return this;
       }, 
 
       onChange: function (event) {
@@ -58,7 +63,31 @@ define([
             $("#list").html(listView.el);
           }
         });
-      }
+      }, 
+  	  
+  	  // load model autocomplete list
+  	  loadModelTypeahead: function() {
+  	  	$('#model').typeahead({
+  	  			source: function(query, process) {
+//  	  				return $.get(url, {query:query}, function (data) {
+//  	  				  return process(data.modelId);
+//  	  			  }
+  	  				return _.pluck(localStore.truckModel, 'modelId');
+  	  			} 
+  	  	});
+  	  },
+  	  
+  	  // load model autocomplete list
+  	  loadFunctionGroupTypeahead: function() {
+  	  	$('#functionGroup').typeahead({
+  	  			source: function(query, process) {
+//  	  				return $.get(url, {query:query}, function (data) {
+//  	  				  return process(data.id);
+//  	  			  }
+  	  				return _.pluck(localStore.functionGroups, 'id');
+  	  			} 
+  	  	});
+  	  }
 
     });
     

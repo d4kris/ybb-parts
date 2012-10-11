@@ -6,10 +6,10 @@ define([
 
 	var SearchFormModel = Backbone.Model.extend({
 		defaults: {
-			'chassisID_1' : '',
-			'chassisID_2' : '',
-			'vin' : '',
-			'model' : '',
+			'chassisID_1'   : '',
+			'chassisID_2'   : '',
+			'vin'           : '',
+			'model'         : '',
 			'functionGroup' : '' 
 		}
 	});

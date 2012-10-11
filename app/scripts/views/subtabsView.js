@@ -8,8 +8,6 @@ define([
 	var SubtabsView = Backbone.View.extend({
 
 	  el: '#subtabs',
-	  /* Which tab user is currently on */
-	  tab: 'parts', 
 	
 	  // events: {
 	  //   "click .search:" : "searchForm"
@@ -17,19 +15,15 @@ define([
 	
 		initialize: function(){
 	  	console.log("subtabsView initialize");
-	    this.loadTemplate();
+	    this.template = _.template( subtabsTemplate );
 	    _.bindAll(this, "render");
 	    this.render();
 	  },
 	
-	  loadTemplate: function() {
-	    console.log("loadTemplate");
-	    this.template = _.template( subtabsTemplate );
-	  },
 	
 	  render: function(){
 	    console.log("subtabsView rendering");
-	    this.$el.html(this.template(this));
+	    this.$el.html(this.template(this.model.toJSON()));
 	    return this;
 	  }
 	
